@@ -18,7 +18,7 @@ class User < ApplicationRecord
       BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
- 
+
   # Return a random token.
   def User.new_token
     SecureRandom.urlsafe_base64
@@ -53,6 +53,12 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
+  # Defines a proto-feed
+  # See "Following users" for the full implementations.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   private
     def downcase_email
       self.email = email.downcase
@@ -63,9 +69,5 @@ class User < ApplicationRecord
       self.activation_digest = User.digest(activation_token)
     end
 
-  # Defines a proto-feed
-  # See "Following users" for the full implementations.
-  def feed
-    Micropost.where("user_id = ?", id)
-  end
+
 end

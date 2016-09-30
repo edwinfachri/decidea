@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160928032749) do
-=======
 ActiveRecord::Schema.define(version: 20160929120911) do
 
   create_table "microposts", force: :cascade do |t|
@@ -24,7 +21,6 @@ ActiveRecord::Schema.define(version: 20160929120911) do
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
->>>>>>> 08c4fc398c3bdfc7efb8277acb91ffb67266d46a
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
