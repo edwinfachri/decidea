@@ -1,8 +1,9 @@
 class User < ApplicationRecord
+
   attr_accessor :remember_token, :activation_token
   before_save :downcase_email
   before_create :create_activation_digest
-
+  has_many :microposts, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true, length: { maximum: 50 }
@@ -17,7 +18,7 @@ class User < ApplicationRecord
       BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
-
+ 
   # Return a random token.
   def User.new_token
     SecureRandom.urlsafe_base64
@@ -62,4 +63,9 @@ class User < ApplicationRecord
       self.activation_digest = User.digest(activation_token)
     end
 
+  # Defines a proto-feed
+  # See "Following users" for the full implementations.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
 end
