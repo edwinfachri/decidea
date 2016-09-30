@@ -1,5 +1,4 @@
 Hi <%= @user.name %>,
 
-Welcome to Decidea! Click on the link below to activate your account:
-
+You recently registered for Decidea. Confirm your email address to complete your Decidea account. It's easy — just click the button below.
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
