@@ -81,8 +81,6 @@ p {
 
 footer {
   position: absolute;
-  float: right;
-  margin-left: -100px;
   width: 100%;
   background-color: black;
   padding-top: 10px;
@@ -105,11 +103,11 @@ footer {
     }
   }
   ul {
-    float: right;
     list-style: none;
+    margin-left: -80px;
     li {
       float: left;
-      margin-left: 15px;
+      margin-right: 15px;
       margin-bottom: 10px;
     }
   }
