@@ -80,18 +80,29 @@ p {
 /* footer */
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  position: absolute;
+  float: right;
+  margin-left: -100px;
+  width: 100%;
+  background-color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  #logo_footer {
+    padding-top: 10em;
+  }
+  img {
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+  p {
+    color: white;
+    margin-bottom: 1px;
+  }
   a {
-    color: $gray;
+    color: white;
     &:hover {
       color: $gray-darker;
     }
-  }
-  small {
-    float: left;
   }
   ul {
     float: right;
@@ -99,9 +110,12 @@ footer {
     li {
       float: left;
       margin-left: 15px;
+      margin-bottom: 10px;
     }
   }
 }
+
+
   /* miscellaneous */
 
 .debug_dump {
