@@ -4,6 +4,11 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$yellow: #ffe036;
+$black: #181818;
+$gray1: #383838;
+$gray2: #484848;
+$white: #f7f7f7;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -64,16 +69,23 @@ p {
 
 #logo {
   float: left;
+  margin-left: -20px;
   margin-right: 10px;
   font-size: 1.7em;
   color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 5px;
   font-weight: bold;
   &:hover {
     color: white;
     text-decoration: none;
+  }
+}
+
+header {
+  #left_header {
+    margin-left: 20px;
   }
 }
 
@@ -82,32 +94,45 @@ p {
 footer {
   position: absolute;
   width: 100%;
-  background-color: black;
+  background-color: $black;
   padding-top: 10px;
   padding-bottom: 10px;
+  font-size: 12px;
+  #follow_decidea {
+    font-size: 14px;
+  }
   #logo_footer {
     padding-top: 10em;
+  }
+  #copyrights {
+    padding-left: 18px;
+    margin-top: 15px;
+  }
+  #share_button {
+    margin-left: -15px;
   }
   img {
     margin-left: 15px;
     margin-top: 10px;
   }
   p {
-    color: white;
+    color: $white;
     margin-bottom: 1px;
   }
   a {
-    color: white;
+    color: $white;
     &:hover {
-      color: $gray-darker;
+      color: $yellow;
+      text-decoration: none;
     }
   }
   ul {
+    margin-top: 70px;
     list-style: none;
     margin-left: -80px;
     li {
       float: left;
-      margin-right: 15px;
+      margin-right: 20px;
       margin-bottom: 10px;
     }
   }
@@ -210,6 +235,13 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+  margin-bottom: 30px;
+}
+
+input[placeholder] {
+  border: 1px solid gray;
+  font-weight: 200;
+  border-radius: 5px;
 }
 
 #error_explanation {
@@ -239,6 +271,35 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.form {
+  margin-top: 10%;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding-bottom: 2%;
+  background-color: $gray-lighter;
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  h1 {
+    font-size: 1.4em;
+    font-weight: 200;
+    margin-bottom: 10%;
+  }
+  p, span {
+    font-size: 12px;
+  }
+  .button {
+    width: 150px;
+    length: 400px;
+    border-style: none;
+    margin-top: 5%;
+    margin-left: 30%;
+  }
+  .create-password {
+    margin-left: 10%;
+  }
 }
 
 /* Users index */

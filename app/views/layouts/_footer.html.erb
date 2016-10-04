@@ -1,9 +1,9 @@
 <footer class="footer">
   <span class="col-md-4">
     <small>
-      <%= link_to image_tag("decidea_logo.png", width: 160, length: 200, alt: "Decidea logo"),
+      <%= link_to image_tag("decidea_logo.png", width: 200, length: 300, alt: "Decidea logo"),
         root_path, id: "logo_footer" %>
-      <p>2016 Decidea, Inc. All Rights Reserved.</p>
+      <p id="copyrights">2016 Decidea, Inc. All Rights Reserved.</p>
     </small>
   </span>
   <nav class="col-md-4">
@@ -12,23 +12,25 @@
         <li><%= link_to "About Us", about_path %></li>
         <li><%= link_to "Privacy Policy", '#' %></li>
         <li><%= link_to "Term of Use", '#' %></li>
-        <li><%= link_to "Contact", '#' %></li>
+        <li><%= link_to "Contact", contact_path %></li>
       </ul>
     </small>
   </nav>
   <span class="col-md-4">
     <small>
-      <p>Follow Decidea</p>
+      <p id="follow_decidea">Follow Decidea</p>
       <p>Connect with us to get new jobs and project daily</p>
     </small>
-      <%= link_to image_tag("icon_fb.png", onmouseover: "this.src='#{asset_path('icon_fblight.png')}'",
-        onmouseout: "this.src='#{asset_path('icon_fb.png')}'", size: 30, alt: "Decidea's Facebook"),
-          '#'%>
-      <%= link_to image_tag("icon_twitter.png", onmouseover: "this.src='#{asset_path('icon_twitterlight.png')}'",
-        onmouseout: "this.src='#{asset_path('icon_twitter.png')}'", size: 30, alt: "Decidea's Twitter"),
-          '#' %>
-      <%= link_to image_tag("icon_instagram.png", onmouseover: "this.src='#{asset_path('icon_instagramlight.png')}'",
-        onmouseout: "this.src='#{asset_path('icon_instagram.png')}'", size: 30, alt: "Decidea's Instagram"),
-          '#' %>
+    <div id="share_button">
+        <%= link_to image_tag("icon_fb.png", onmouseover: "this.src='#{asset_path('icon_fblight.png')}'",
+          onmouseout: "this.src='#{asset_path('icon_fb.png')}'", size: 30, alt: "Decidea's Facebook"),
+            '#'%>
+        <%= link_to image_tag("icon_twitter.png", onmouseover: "this.src='#{asset_path('icon_twitterlight.png')}'",
+          onmouseout: "this.src='#{asset_path('icon_twitter.png')}'", size: 30, alt: "Decidea's Twitter"),
+            '#' %>
+        <%= link_to image_tag("icon_instagram.png", onmouseover: "this.src='#{asset_path('icon_instagramlight.png')}'",
+          onmouseout: "this.src='#{asset_path('icon_instagram.png')}'", size: 30, alt: "Decidea's Instagram"),
+            '#' %>
+      </div>
   </span>
 </footer>
