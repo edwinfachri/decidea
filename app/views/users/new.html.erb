@@ -1,24 +1,25 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div class="form row">
+  <h1>Create Your Account</h1>
+  <div class="col-md-10 col-md-offset-1">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+      <span class="row form-inline">
+        <%= render 'shared/error_messages', object: f.object %>
+      </span>
+      <div class="row form-inline">
+        <%= f.text_field :first_name, class: 'form-control', placeholder: "FIRST NAME" %>
+        <%= f.text_field :last_name, class: 'form-control', placeholder: "LAST NAME" %>
+      </div>
+      <%= f.email_field :email, class: 'form-control', placeholder: "EMAIL ADDRESS" %>
+        <%= f.text_field :username, class: 'form-control', placeholder: "USERNAME" %>
+      <%= f.password_field :password, class: 'form-control', placeholder: "CHOOSE PASSWORD" %>
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "CONFIRM PASSWORD" %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <%= image_submit_tag('button_join.png', class: "button") %>
+      <p class="text-center">
+        Already have an account?
+        <%= link_to "Sign in", login_path %>
+      </p>
     <% end %>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930150146) do
+ActiveRecord::Schema.define(version: 20161005045740) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160930150146) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
     t.string   "email"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -45,7 +45,10 @@ ActiveRecord::Schema.define(version: 20160930150146) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "username"
+    t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

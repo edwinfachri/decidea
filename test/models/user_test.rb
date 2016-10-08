@@ -2,16 +2,21 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "Example User", email: "user@example.com",
-      password: "foobar", password_confirmation: "foobar")
+    @user = User.new(first_name: "Example", last_name: "User", username: "exampleuser",
+     email: "user@example.com", password: "foobar", password_confirmation: "foobar")
   end
 
   test "should be valid" do
     assert @user.valid?
   end
 
-  test "name should be present" do
-    @user.name = ""
+  test "first name should be present" do
+    @user.first_name = ""
+    assert_not @user.valid?
+  end
+
+  test "last name should be present" do
+    @user.last_name = ""
     assert_not @user.valid?
   end
 
@@ -20,8 +25,18 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
-  test "name should not be too long" do
-    @user.name = "a" * 51
+  test "username should be present" do
+    @user.username = ""
+    assert_not @user.valid?
+  end
+
+  test "first name should not be too long" do
+    @user.first_name = "a" * 21
+    assert_not @user.valid?
+  end
+
+  test "last name should not be too long" do
+    @user.last_name = "a" * 21
     assert_not @user.valid?
   end
 
@@ -45,6 +60,24 @@ class UserTest < ActiveSupport::TestCase
     invalid_addresses.each do |invalid_address|
       @user.email = invalid_address
       assert_not @user.valid?, "#{invalid_address.inspect} should be invalid"
+    end
+  end
+
+  test "username validation should accept valid input" do
+    valid_input = %w[example example1 example1111111111111
+     example_example]
+    valid_input.each do |valid_input|
+      @user.username = valid_input
+      assert @user.valid?, "#{valid_input.inspect} should be valid"
+    end
+  end
+
+  test "username validation should not accept invalid input" do
+    invalid_input = %w[1example %example1 examplfe1111111111111
+     ^^example_ex%ample]
+    invalid_input.each do |invalid_input|
+      @user.username = invalid_input
+      assert @user.invalid?, "#{invalid_input.inspect} should be invalid"
     end
   end
 

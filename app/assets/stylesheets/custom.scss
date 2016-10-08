@@ -8,7 +8,9 @@ $yellow: #ffe036;
 $black: #181818;
 $gray1: #383838;
 $gray2: #484848;
-$white: #f7f7f7;
+$greyish-white: #f7f7f7;
+$white: #ffffff;
+$garis-kuning: #ffe036;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -72,7 +74,7 @@ p {
   margin-left: -20px;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: $greyish-white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 5px;
@@ -239,7 +241,7 @@ input {
 }
 
 input[placeholder] {
-  border: 1px solid gray;
+  border: 1px solid $gray-lighter;
   font-weight: 200;
   border-radius: 5px;
 }
@@ -278,10 +280,10 @@ input[placeholder] {
   margin-left: 25%;
   margin-right: 25%;
   padding-bottom: 2%;
-  background-color: $gray-lighter;
+  background-color: $greyish-white;
   border-style: solid;
   border-width: 1px;
-  border-color: gray;
+  border-color: $gray-lighter;
   h1 {
     font-size: 1.4em;
     font-weight: 200;

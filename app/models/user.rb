@@ -12,9 +12,12 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :first_name, presence: true, length: { maximum: 20 }
+  validates :last_name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, length: { maximum: 255 },
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+  validates :username, presence: true, length: { minimum: 6, maximum: 20 },
+  format: { with: /\A[a-z]\w{6,20}/ }, uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
@@ -98,6 +101,10 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  def name
+    self.first_name + " " + self.last_name
   end
 
   private
