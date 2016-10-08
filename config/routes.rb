@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/setting', to: 'users#edit'
+  get 'users/profile_setting'
+  get 'users/portfolio_setting'
+  get 'users/password_setting'
   resources :users do
     member do
       get :following, :followers

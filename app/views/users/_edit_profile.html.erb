@@ -1,0 +1,38 @@
+<%= form_for(current_user, remote: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: 'form-control' %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username, class: 'form-control' %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location, class: 'form-control' %>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active">
+      <%= link_to "Client", '#' %>
+    </li>
+    <li role="presentation">
+      <%= link_to "Worker", '#' %>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="well">
+      <%= f.select :id, ['Example1', 'Example2', 'Example3'],class: 'form-control',
+        :prompt => 'Please Select' %>
+    </div>
+  </div>
+
+  <%= f.label :biography, "Bio" %>
+  <%= f.text_area :biography, class: 'form-control' %>
+
+  <%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>

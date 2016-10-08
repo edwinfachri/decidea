@@ -62,6 +62,24 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def profile_setting
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def portfolio_setting
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def password_setting
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email,

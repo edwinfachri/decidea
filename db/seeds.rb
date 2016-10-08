@@ -10,7 +10,7 @@
 User.create!(first_name: "Decidea",
              last_name: "Admin",
              email: "admin@decidea.com",
-             username: "admin",
+             username: "adminn",
              password: "fetishkaki",
              password_confirmation: "fetishkaki",
              admin: true,
@@ -20,7 +20,7 @@ User.create!(first_name: "Decidea",
 99.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
-  username = Faker::Name.name
+  username = "example#{n+1}"
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(first_name:  first_name,
@@ -47,3 +47,7 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+specialities.create!(name: "Drawing")
+specialities.create!(name: "Swimming")
+specialities.create!(name: "Cooking")
