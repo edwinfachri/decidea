@@ -48,6 +48,32 @@ followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
-specialities.create!(name: "Drawing")
-specialities.create!(name: "Swimming")
-specialities.create!(name: "Cooking")
+Category.create!(name: "Graphic Design")
+Category.create!(name: "Cinematography")
+Category.create!(name: "Photography")
+Category.create!(name: "Programming")
+Category.create!(name: "Music and Audio")
+Category.create!(name: "Business")
+Category.create!(name: "Event")
+
+Speciality.create(name: "Graphic Designer", category_id: 1)
+Speciality.create(name: "Brand Designer", category_id: 1)
+Speciality.create(name: "UI/UX Designer", category_id: 1)
+Speciality.create(name: "3D Animator", category_id: 1)
+Speciality.create(name: "3D Modeler", category_id: 1)
+Speciality.create(name: "3D Renderer", category_id: 1)
+Speciality.create(name: "Drafter", category_id: 1)
+
+Speciality.create(name: "Cinematorapher", category_id: 2)
+Speciality.create(name: "Director", category_id: 2)
+Speciality.create(name: "Script Writer", category_id: 2)
+Speciality.create(name: "Content Writer", category_id: 2)
+Speciality.create(name: "Talent", category_id: 2)
+Speciality.create(name: "Motion Grapher", category_id: 2)
+
+Speciality.create(name: "Photographer", category_id: 3)
+
+Speciality.create(name: "Web Programmer", category_id: 4)
+
+Speciality.create(name: "Music Editor", category_id: 5)
+Speciality.create(name: "Audio Engineer", category_id: 5)

@@ -26,8 +26,9 @@
   </ul>
   <div class="tab-content">
     <div class="well">
-      <%= f.select :id, ['Example1', 'Example2', 'Example3'],class: 'form-control',
-        :prompt => 'Please Select' %>
+
+      <%= f.select :id, Speciality.all.collect { |p| [ p.name, p.id ] },
+        :prompt => "Please Select" %>
     </div>
   </div>
 

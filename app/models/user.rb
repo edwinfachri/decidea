@@ -10,7 +10,7 @@ class User < ApplicationRecord
     foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :porfolios
+  has_and_belongs_to_many :specialities
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true, length: { maximum: 20 }
@@ -104,8 +104,14 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # Returns full name
   def name
     self.first_name + " " + self.last_name
+  end
+
+  # Choose speciality
+  def choose_speciality(speciality)
+    specialities_users.create(speciality_id: speciality)
   end
 
   private
