@@ -10,7 +10,8 @@ class User < ApplicationRecord
     foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_and_belongs_to_many :specialities
+  has_many :specialities_users
+  has_many :specialities, through: :specialities_users
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true, length: { maximum: 20 }
@@ -110,7 +111,7 @@ class User < ApplicationRecord
   end
 
   # Choose speciality
-  def choose_speciality(speciality)
+  def specialization(speciality)
     specialities_users.create(speciality_id: speciality)
   end
 

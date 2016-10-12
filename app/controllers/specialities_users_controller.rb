@@ -1,0 +1,3 @@
+class SpecialitiesUsersController < ApplicationController
+    
+end
