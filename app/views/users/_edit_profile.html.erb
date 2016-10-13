@@ -27,8 +27,8 @@
   <div class="tab-content">
     <div class="well">
 
-      <%= f.select :id, Speciality.all.collect { |p| [ p.name, p.id ] },
-        :prompt => "Please Select" %>
+      <%= render 'specialization' %>
+      
     </div>
   </div>
 

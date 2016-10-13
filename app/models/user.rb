@@ -112,7 +112,7 @@ class User < ApplicationRecord
 
   # Choose speciality
   def specialization(speciality)
-    specialities_users.create(speciality_id: speciality)
+    specialities_users.create(speciality_id: speciality.id)
   end
 
   private
