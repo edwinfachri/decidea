@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013164312) do
+ActiveRecord::Schema.define(version: 20161016162229) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 20161013164312) do
     t.string   "company_name"
     t.text     "company_description"
     t.string   "company_website"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "logo"
+    t.integer  "seen_counter",        default: 0
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -78,7 +80,7 @@ ActiveRecord::Schema.define(version: 20161013164312) do
     t.index ["category_id"], name: "index_specialities_on_category_id"
   end
 
-  create_table "specialities_users", id: false, force: :cascade do |t|
+  create_table "specialities_users", force: :cascade do |t|
     t.integer "user_id",       null: false
     t.integer "speciality_id", null: false
     t.index ["speciality_id"], name: "index_specialities_users_on_speciality_id"

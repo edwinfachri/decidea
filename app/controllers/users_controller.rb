@@ -6,14 +6,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.paginate(page: params[:page])
-    
+
   end
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-    
-
   end
 
   def new
@@ -34,11 +32,12 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     @specialities_users = current_user.specialities_users
-    
   end
 
   def update
     @user = User.find(params[:id])
+    @speciality = Speciality.find(params[:speciality_id])
+    current_user.specialization(@speciality)
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user

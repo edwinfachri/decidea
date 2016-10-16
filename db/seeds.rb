@@ -56,24 +56,45 @@ Category.create!(name: "Music and Audio")
 Category.create!(name: "Business")
 Category.create!(name: "Event")
 
-Speciality.create(name: "Graphic Designer", category_id: 1)
-Speciality.create(name: "Brand Designer", category_id: 1)
-Speciality.create(name: "UI/UX Designer", category_id: 1)
-Speciality.create(name: "3D Animator", category_id: 1)
-Speciality.create(name: "3D Modeler", category_id: 1)
-Speciality.create(name: "3D Renderer", category_id: 1)
-Speciality.create(name: "Drafter", category_id: 1)
+Speciality.create!(name: "Graphic Designer", category_id: 1)
+Speciality.create!(name: "Brand Designer", category_id: 1)
+Speciality.create!(name: "UI/UX Designer", category_id: 1)
+Speciality.create!(name: "3D Animator", category_id: 1)
+Speciality.create!(name: "3D Modeler", category_id: 1)
+Speciality.create!(name: "3D Renderer", category_id: 1)
+Speciality.create!(name: "Drafter", category_id: 1)
 
-Speciality.create(name: "Cinematorapher", category_id: 2)
-Speciality.create(name: "Director", category_id: 2)
-Speciality.create(name: "Script Writer", category_id: 2)
-Speciality.create(name: "Content Writer", category_id: 2)
-Speciality.create(name: "Talent", category_id: 2)
-Speciality.create(name: "Motion Grapher", category_id: 2)
+Speciality.create!(name: "Cinematorapher", category_id: 2)
+Speciality.create!(name: "Director", category_id: 2)
+Speciality.create!(name: "Script Writer", category_id: 2)
+Speciality.create!(name: "Content Writer", category_id: 2)
+Speciality.create!(name: "Talent", category_id: 2)
+Speciality.create!(name: "Motion Grapher", category_id: 2)
 
-Speciality.create(name: "Photographer", category_id: 3)
+Speciality.create!(name: "Photographer", category_id: 3)
 
-Speciality.create(name: "Web Programmer", category_id: 4)
+Speciality.create!(name: "Web Programmer", category_id: 4)
 
-Speciality.create(name: "Music Editor", category_id: 5)
-Speciality.create(name: "Audio Engineer", category_id: 5)
+Speciality.create!(name: "Music Editor", category_id: 5)
+Speciality.create!(name: "Audio Engineer", category_id: 5)
+
+JobPost.create!(job_title: "Examples",
+                job_location: "Home",
+                job_description: "example example example",
+                speciality_id: 1,
+                company_name: "Decidea",
+                company_description: "decidea decidea",
+                company_website: "https://www.decidea.com")
+
+50.times do |n|
+  job_title  = "job_title#{n+1}"
+  company_name  = "Company name #{n+1}"
+  website = "example-#{n+1}.com"
+  JobPost.create!(job_title: job_title,
+                  job_location: "Home",
+                  job_description: "example example example",
+                  speciality_id: 1,
+                  company_name: company_name,
+                  company_description: "decidea decidea",
+                  company_website: website)
+end

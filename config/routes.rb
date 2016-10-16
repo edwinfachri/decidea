@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/profile_setting'
   get 'users/portfolio_setting'
   get 'users/password_setting'
+
   resources :users do
     member do
       get :following, :followers
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
   resources :specialities_users
   resources :portfolios
   resources :pictures
+  resources :job_posts
 end

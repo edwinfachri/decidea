@@ -1,4 +1,6 @@
 <li>
   <span class="content"><%= specialities_user.user_id %></span>
   <span class="content"><%= specialities_user.speciality_id %></span>
+  <% @speciality_id = specialities_user.speciality_id %>
+  <%= link_to "delete", specialities_user_path, method: :delete %>
 </li>

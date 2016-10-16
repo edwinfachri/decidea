@@ -1,0 +1,10 @@
+<% provide(:title, 'Job Board') %>
+<h1>Job Board</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @job_posts %>
+</ul>
+
+<%= will_paginate %>

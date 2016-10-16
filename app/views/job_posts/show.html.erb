@@ -1,0 +1,50 @@
+<% provide(:title, @job_post) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="logo">
+      <h1>
+        <%= image_tag @job_post.logo, :size => '150x150' %>
+      </h1>
+    </section>
+    <div>
+      <h2>
+        <%= @job_post.company_name %>
+      </h2>
+      <p>
+        <%= @job_post.company_description %>
+      </p>
+    </div>
+  </aside>
+  <div class="col-md-6">
+    <span>
+      <div>
+        <%= @job_post.job_title %>
+      </div>
+      <div>
+        <div>
+          <%= @job_post.job_location %>
+        </div>
+        <div>
+          <%= @job_post.created_at %>
+        </div>
+      </div>
+    </span>
+    <span>
+      Job Description
+    </span>
+    <span>
+      <%= @job_post.job_description %>
+    </span>
+  </div>
+  <div class="col-md-4">
+    <div>
+      Button
+    </div>
+    <div>
+      Share
+    </div>
+    <div>
+      Button share
+    </div>
+  </div>
+</div>
