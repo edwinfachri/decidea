@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016162229) do
+ActiveRecord::Schema.define(version: 20161017153135) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20161016162229) do
     t.datetime "updated_at",                      null: false
     t.string   "logo"
     t.integer  "seen_counter",        default: 0
+    t.integer  "rates"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|

@@ -3,20 +3,25 @@
   <h1>Post a Job</h1>
   <div class="col-md-10 col-md-offset-1">
     <%= form_for(@jobpost) do |f| %>
-
+      <span class="row form-inline">
+        <%= render 'shared/error_messages', object: f.object %>
+      </span>
       <%= f.label :job_title %>
       <%= f.text_field :job_title, class: 'form-control' %>
       <%= f.label :job_location %>
       <%= f.text_field :job_location, class: 'form-control' %>
       <%= f.label :job_description %>
       <%= f.text_area :job_description, class: 'form-control' %>
-
+      <%= f.label :rates %>
+      <%= f.number_field :rates, class: 'form-control', step: :any %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
 
       <%= f.label :company_name %>
       <%= f.text_field :company_name, class: 'form-control' %>
       <%= f.label :company_description %>
       <%= f.text_area :company_description, class: 'form-control' %>
       <%= f.label :company_website %>
+
       <%= f.text_field :company_website, class: 'form-control' %>
       <span class="picture">
         <%= f.file_field :logo, accept: 'image/jpeg, image/gif, image/png' %>

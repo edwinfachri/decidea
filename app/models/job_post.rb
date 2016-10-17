@@ -1,5 +1,6 @@
 class JobPost < ApplicationRecord
   has_many :specialities
+  belongs_to :user
   default_scope -> { order(created_at: :desc) }
   mount_uploader :logo, PictureUploader
   validates :job_title, presence: true
@@ -8,6 +9,8 @@ class JobPost < ApplicationRecord
   validates :company_name, presence: true
   validates :company_description, presence: true
   validates :company_website, presence: true
+  validates :rates, presence: true
+  validates :user_id, presence: true
   validate :logo_size
 
   private
