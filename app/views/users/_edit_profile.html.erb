@@ -1,5 +1,4 @@
 <%= form_for(current_user, remote: true) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
 
   <%= f.label :first_name %>
   <%= f.text_field :first_name, class: 'form-control' %>
@@ -26,14 +25,21 @@
   </ul>
   <div class="tab-content">
     <div class="well">
-
-      <%= render 'specialization' %>
-      
+      <% current_user.specialities.each do |x| %>
+        <p>
+          <%= x.name %>
+        </p>
+      <% end %>
+      <%= f.fields_for(:specialities, method: 'post') do |g| %>
+        <%= select_tag(:speciality_id, options_for_select(Speciality.all.map { |u| [u.name, u.id] } )) %>
+        <%= g.submit 'speciality', class: "btn btn-primary" %>
+      <% end %>
     </div>
+
   </div>
 
   <%= f.label :biography, "Bio" %>
   <%= f.text_area :biography, class: 'form-control' %>
 
-  <%= f.submit "Save changes", class: "btn btn-primary" %>
+  <%= f.submit 'update', class: "btn btn-primary" %>
 <% end %>

@@ -1,5 +1,0 @@
-<%= form_for(current_user.specialities_users.build, method: 'post') do |g| %>
-  <%= render @specialities_users %>
-  <%= select_tag(:speciality_id, options_for_select(Speciality.all.map { |u| [u.name, u.id] } )) %>
-  <%= g.submit "Add", class: "btn btn-primary" %>
-<% end %>

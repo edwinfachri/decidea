@@ -31,18 +31,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @specialities_users = current_user.specialities_users
   end
 
   def update
     @user = User.find(params[:id])
-    @speciality = Speciality.find(params[:speciality_id])
-    current_user.specialization(@speciality)
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
+    if params[:commit] == 'update'
+      if @user.update_attributes(user_params)
+        flash[:success] = "Profile updated"
+        redirect_to edit_user_path
+      else
+        render 'edit'
+      end
+    elsif params[:commit] == 'speciality'
+      specialization
     end
   end
 
@@ -82,6 +83,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def specialization
+    @speciality = Speciality.find(params[:speciality_id])
+    @user.specialities << @speciality
+  end
+
+  def unspecialization
+    @user.specialities.destroy(1)
   end
 
   private
