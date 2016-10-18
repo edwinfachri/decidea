@@ -1,6 +1,11 @@
 class JobPost < ApplicationRecord
   has_many :specialities
-  belongs_to :user
+  has_and_belongs_to_many :users
+
+  has_many :job_post_comments, foreign_key: "user_id",
+    class_name: "JobPostComment", dependent: :destroy
+  has_many :users, through: :job_post_comments
+
   default_scope -> { order(created_at: :desc) }
   mount_uploader :logo, PictureUploader
   validates :job_title, presence: true
@@ -10,8 +15,12 @@ class JobPost < ApplicationRecord
   validates :company_description, presence: true
   validates :company_website, presence: true
   validates :rates, presence: true
-  validates :user_id, presence: true
   validate :logo_size
+
+  #Comment
+  def comment(comment, job_post)
+    job_post_comments.create(job_post_id: job_post.id, comment: comment)
+  end
 
   private
 

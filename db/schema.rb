@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017153135) do
+ActiveRecord::Schema.define(version: 20161018083910) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "job_post_comments", force: :cascade do |t|
+    t.integer  "job_post_id"
+    t.integer  "user_id"
+    t.string   "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["job_post_id"], name: "index_job_post_comments_on_job_post_id"
+    t.index ["user_id"], name: "index_job_post_comments_on_user_id"
   end
 
   create_table "job_posts", force: :cascade do |t|
@@ -34,6 +44,13 @@ ActiveRecord::Schema.define(version: 20161017153135) do
     t.integer  "rates"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_job_posts_on_user_id"
+  end
+
+  create_table "job_posts_users", id: false, force: :cascade do |t|
+    t.integer "user_id",     null: false
+    t.integer "job_post_id", null: false
+    t.index ["job_post_id"], name: "index_job_posts_users_on_job_post_id"
+    t.index ["user_id"], name: "index_job_posts_users_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -81,13 +98,6 @@ ActiveRecord::Schema.define(version: 20161017153135) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.index ["category_id"], name: "index_specialities_on_category_id"
-  end
-
-  create_table "specialities_users", force: :cascade do |t|
-    t.integer "user_id",       null: false
-    t.integer "speciality_id", null: false
-    t.index ["speciality_id"], name: "index_specialities_users_on_speciality_id"
-    t.index ["user_id"], name: "index_specialities_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

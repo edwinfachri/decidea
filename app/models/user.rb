@@ -10,9 +10,15 @@ class User < ApplicationRecord
     foreign_key: "followed_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
   has_many :specialities_users
   has_many :specialities, through: :specialities_users
-  has_many :job_posts, dependent: :destroy
+
+  has_and_belongs_to_many :job_posts
+
+  has_many :job_post_comments, class_name: "JobPostComment",
+    foreign_key: "job_post_id", dependent: :destroy
+  has_many :job_posts, through: :job_post_comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true, length: { maximum: 20 }
@@ -110,6 +116,7 @@ class User < ApplicationRecord
   def name
     self.first_name + " " + self.last_name
   end
+
 
   # Choose speciality
   def specialization(speciality)

@@ -14,8 +14,7 @@
       <%= f.text_area :job_description, class: 'form-control' %>
       <%= f.label :rates %>
       <%= f.number_field :rates, class: 'form-control', step: :any %>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-
+    
       <%= f.label :company_name %>
       <%= f.text_field :company_name, class: 'form-control' %>
       <%= f.label :company_description %>

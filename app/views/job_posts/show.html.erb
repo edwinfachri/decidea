@@ -1,4 +1,4 @@
-<% provide(:title, @job_post) %>
+<% provide(:title, @job_post.job_title) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="logo">
@@ -45,6 +45,11 @@
     </div>
     <div>
       Button share
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div>
+      <%= render 'job_post_comment_form' %>
     </div>
   </div>
 </div>
