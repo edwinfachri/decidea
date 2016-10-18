@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :job_posts
 
   has_many :job_post_comments, class_name: "JobPostComment",
-    foreign_key: "job_post_id", dependent: :destroy
+    foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_comments
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

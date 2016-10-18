@@ -2,7 +2,7 @@ class JobPost < ApplicationRecord
   has_many :specialities
   has_and_belongs_to_many :users
 
-  has_many :job_post_comments, foreign_key: "user_id",
+  has_many :job_post_comments, foreign_key: "job_post_id",
     class_name: "JobPostComment", dependent: :destroy
   has_many :users, through: :job_post_comments
 
@@ -20,6 +20,12 @@ class JobPost < ApplicationRecord
   #Comment
   def comment(comment, job_post)
     job_post_comments.create(job_post_id: job_post.id, comment: comment)
+  end
+
+  def comment_feeds
+    job_post = JobPost.find(params[:id])
+    JobPostComment.where("job_post_id IN (#{job_post})",
+      user_id: id)
   end
 
   private
