@@ -1,0 +1,17 @@
+<% provide(:title, 'Create Portfolio') %>
+<div class="form row">
+  <h1>Your Portfolio</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for(@portfolio) do |f| %>
+      <span class="row form-inline">
+        <%= render 'shared/error_messages', object: f.object %>
+      </span>
+
+      <%= f.text_field :name, class: 'form-control', placeholder: "Portfolio's name" %>
+      <%= f.text_area :description, class: 'form-control', placeholder: "Description" %>
+
+      <%= f.submit 'create', class: "btn btn-primary" %>
+      </p>
+    <% end %>
+  </div>
+</div>

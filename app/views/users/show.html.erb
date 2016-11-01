@@ -1,24 +1,32 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-    <section class="stats">
-      <%= render 'shared/stats' %>
-    </selection>
-  </aside>
+  <section class="user_info">
+    <h1>
+      <%= gravatar_for @user %>
+      <%= @user.name %>
+    </h1>
+  </section>
+  <section class="stats">
+    <%= render 'shared/stats' %>
+  </selection>
+  <div>
+    <div>
+      <%= @user.biography %>
+    </div>
+    <div>
+      <h1>Portfolio</h1>
+          <% @portfolios.each do |l| %>
+            <div>
+              <% if l.pictures.present? %>
+                <%= link_to l.name, portfolio_picture_path(l) %>
+              <% else %>
+                <%= l.name %>
+              <% end %>
+            </div>
+          <% end %>
+    </div>
+  </div>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% end %>
   </div>
 </div>

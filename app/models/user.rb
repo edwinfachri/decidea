@@ -19,7 +19,7 @@ class User < ApplicationRecord
     foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_comments
 
-  has_many :portfolios
+  has_many :portfolios, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true, length: { maximum: 20 }

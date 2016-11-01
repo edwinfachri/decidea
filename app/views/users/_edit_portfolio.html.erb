@@ -1,1 +1,6 @@
-<p>Portfolio</p>
+<%= form_tag new_portfolio_picture_path(2), :method => "get" do %>
+  <%= link_to "Create Portfolio", new_portfolio_path %>
+
+  <%= select_tag(:portfolio_id, options_for_select(Portfolio.all.map { |u| [u.name, u.id] } )) %>
+  <%= submit_tag 'submit' %>
+<% end %>

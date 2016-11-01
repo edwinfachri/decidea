@@ -12,6 +12,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @portfolios = @user.portfolios
+
   end
 
   def new
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
     elsif params[:commit] == 'speciality'
       specialization
     end
+    @portfolio = Portfolio.find_by(id: params[:portfolio_id])
   end
 
   def destroy

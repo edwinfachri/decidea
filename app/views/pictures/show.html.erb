@@ -1,0 +1,16 @@
+<%= @picture.title %>
+<%= @user.username %>
+<%= image_tag @picture.picture %>
+
+image <%= @picture.id %> of <%= @pictures.count %>
+<% if @next %>
+  <%= link_to "Next", [@portfolio, @next] %>
+<% end %>
+<% if @prev %>
+  <%= link_to "Previous", [@portfolio, @prev] %>
+<% end %>
+<%= @picture.title %>
+by <%= @user.username %>
+<%= @picture.description %>
+
+published <%= @picture.created_at %>

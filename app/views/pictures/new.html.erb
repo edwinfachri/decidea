@@ -1,0 +1,17 @@
+<%= form_for([@picture.portfolio, @picture]) do |f| %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+  </span>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
