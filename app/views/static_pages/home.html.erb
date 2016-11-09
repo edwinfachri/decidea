@@ -1,1 +1,3 @@
-<%= render 'shared/portfolios' %>
+<% if logged_in? %>
+  <%= render 'shared/portfolios' %>
+<% end %>

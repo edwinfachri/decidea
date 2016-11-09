@@ -15,9 +15,11 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :job_posts
 
-  has_many :job_post_comments, class_name: "JobPostComment",
-    foreign_key: "user_id", dependent: :destroy
+  has_many :job_post_comments, foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_comments
+
+  has_many :job_post_views, foreign_key: "user_id", dependent: :destroy
+  has_many :job_posts, through: :job_post_views
 
   has_many :portfolios, dependent: :destroy
 

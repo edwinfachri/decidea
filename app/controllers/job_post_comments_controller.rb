@@ -8,9 +8,19 @@ class JobPostCommentsController < ApplicationController
   end
 
   def create
-    redirect_to job_posts_url
+    @user = current_user
+    @job_post = JobPost.find(params[:job_post_id])
+    @job_post_comment = @job_post.job_post_comments.create(comment_params)
+    @job_post_comment.user_id = @user.id
+    if @job_post_comment.save
+      redirect_to @job_post
+    else
+      render new
+    end
   end
 
   private
-
+  def comment_params
+    params.require(:job_post_comment).permit(:comment, :user_id, :job_post_id)
+  end
 end

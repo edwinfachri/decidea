@@ -5,15 +5,20 @@ class JobPostsController < ApplicationController
 
   def index
     @user = User.find_by(params[:user_id])
-    @job_posts = JobPost.paginate(page: params[:page])
+    if params[:search]
+      @job_posts = JobPost.search(params[:search]).paginate(page: params[:page])
+    else
+      @job_posts = JobPost.paginate(page: params[:page])
+    end
+    @job_post_views = JobPostView.all
+    @job_post_comments = JobPostComment.all
   end
 
   def show
     @user = current_user
     @job_post = JobPost.find(params[:id])
-    unless request.env["HTTP_USER_AGENT"].match(/\(.*https?:\/\/.*\)/)
-      JobPost.increment_counter :seen_counter, @job_post
-    end
+    @job_post_view = @user.job_post_views.find_or_create_by(job_post_id: @job_post.id)
+    @job_post_comments = JobPostComment.where(job_post_id: @job_post.id)
   end
 
   def new
@@ -25,13 +30,14 @@ class JobPostsController < ApplicationController
     @user = current_user
     @jobpost = JobPost.new(jobpost_params)
     if @jobpost.save
-      @user.job_posts << @jobpost
+      @user.job_posts.create(jobpost_params)
       flash[:info] = "Posted"
       redirect_to job_posts_url
     else
       render 'new'
     end
   end
+
   def commentpost
     redirect_to job_posts_url
   end
@@ -39,9 +45,9 @@ class JobPostsController < ApplicationController
   private
 
   def jobpost_params
-    params.require(:job_post).permit(:job_title, :job_location, :job_description,
+    params.require(:job_post).permit(:job_title, :job_description,
       :speciality_id, :company_name, :company_description, :company_website, :logo,
-      :rates)
+      :rates, :location_id)
   end
 
 end

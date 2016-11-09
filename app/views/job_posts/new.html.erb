@@ -9,12 +9,12 @@
       <%= f.label :job_title %>
       <%= f.text_field :job_title, class: 'form-control' %>
       <%= f.label :job_location %>
-      <%= f.text_field :job_location, class: 'form-control' %>
-      <%= f.label :job_description %>
+      <%= f.collection_select(:location_id, Location.all, :id, :name) %>
+      <%= f.label :job_Description %>
       <%= f.text_area :job_description, class: 'form-control' %>
       <%= f.label :rates %>
       <%= f.number_field :rates, class: 'form-control', step: :any %>
-    
+
       <%= f.label :company_name %>
       <%= f.text_field :company_name, class: 'form-control' %>
       <%= f.label :company_description %>

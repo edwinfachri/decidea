@@ -22,7 +22,7 @@
       </div>
       <div>
         <div>
-          <%= @job_post.job_location %>
+          <%= Location.where(id: @job_post.location_id).take.name %>
         </div>
         <div>
           <%= @job_post.created_at %>
@@ -49,7 +49,14 @@
   </div>
   <div class="col-md-4">
     <div>
-      <%= render 'job_post_comment_form' %>
+      <%= render 'shared/job_post_comment_form' %>
+      <% @job_post_comments.each do |comment| %>
+        <div>
+          <%= User.where(id: comment.user_id).take.name %>
+          <%= comment.comment %>
+          <%= comment.created_at %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
