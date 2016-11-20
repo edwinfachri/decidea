@@ -6,6 +6,7 @@
       <span class="row form-inline">
         <%= render 'shared/error_messages', object: f.object %>
       </span>
+      <%= f.hidden_field :user_id, :value => current_user.id %>
       <%= f.label :job_title %>
       <%= f.text_field :job_title, class: 'form-control' %>
       <%= f.label :job_location %>
@@ -14,6 +15,8 @@
       <%= f.text_area :job_description, class: 'form-control' %>
       <%= f.label :rates %>
       <%= f.number_field :rates, class: 'form-control', step: :any %>
+
+      <%= select_tag(:speciality_id, options_for_select(Speciality.all.map { |u| [u.name, u.id] } )) %>
 
       <%= f.label :company_name %>
       <%= f.text_field :company_name, class: 'form-control' %>

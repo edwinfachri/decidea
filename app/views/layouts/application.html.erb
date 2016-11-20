@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
   </head>
-  <body id="<%= @job_board_page ? 'bg-greyish-white' : ''%>">
+  <body id="<%= @login_page ? '' : 'bg-greyish-white'%>">
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <% flash.each do |message_type, message| %>

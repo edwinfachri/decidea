@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :specialities
   resources :specialities_users
+  resources :job_post_users
   resources :portfolios do
     resources :pictures
   end

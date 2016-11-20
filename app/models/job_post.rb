@@ -1,6 +1,5 @@
 class JobPost < ApplicationRecord
   has_many :specialities
-  has_and_belongs_to_many :users
 
   has_many :job_post_comments, foreign_key: "job_post_id",
     class_name: "JobPostComment", dependent: :destroy
@@ -9,11 +8,20 @@ class JobPost < ApplicationRecord
   has_many :job_post_views, foreign_key: "job_post_id", dependent: :destroy
   has_many :users, through: :job_post_views
 
+  has_many :speciality_job_posts, foreign_key: "job_post_id", dependent: :destroy
+  has_many :specialities, through: :speciality_job_posts
+
+  has_many :job_post_users, foreign_key: "job_post_id", dependent: :destroy
+  has_many :users, through: :job_post_users
+
+
   has_one :location
+  has_one :user, foreign_key: "user_id"
 
   default_scope -> { order(created_at: :desc) }
   mount_uploader :logo, PictureUploader
   validates :job_title, presence: true
+  validates :user_id, presence: true
   validates :location_id, presence: true
   validates :company_name, presence: true
   validates :rates, numericality: { greater_than_or_equal_to: 1 }
@@ -37,6 +45,8 @@ class JobPost < ApplicationRecord
     where("company_name LIKE ?", "%#{search}%")
     where("company_description LIKE ?", "%#{search}%")
   end
+
+
 
   private
 

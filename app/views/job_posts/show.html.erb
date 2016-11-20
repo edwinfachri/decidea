@@ -1,62 +1,73 @@
 <% provide(:title, @job_post.job_title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="logo">
-      <h1>
-        <%= image_tag @job_post.logo, :size => '150x150' %>
-      </h1>
-    </section>
-    <div>
-      <h2>
-        <%= @job_post.company_name %>
-      </h2>
-      <p>
-        <%= @job_post.company_description %>
-      </p>
+<div class="job-board-show row" id="bg-white">
+  <div class="col-md-3 section border">
+    <div class="logo">
+      <%= image_tag @job_post.logo, :size => '150x150' %>
     </div>
-  </aside>
-  <div class="col-md-6">
-    <span>
+    <h4>
+      <%= @job_post.company_name %>
+    </h4>
+    <p>
+      <%= @job_post.company_description %>
+    </p>
+    <div>
+      <% @specialities.each do |s| %>
+        <%= Speciality.where(id: s.speciality_id).take.name %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-6 section border">
+    <div>
       <div>
-        <%= @job_post.job_title %>
+        <h3>
+          <%= @job_post.job_title %>
+        </h3>
       </div>
-      <div>
-        <div>
+      <div class="row">
+        <div class="col-md-2">
           <%= Location.where(id: @job_post.location_id).take.name %>
         </div>
-        <div>
+        <div class="col-md-6">
           <%= @job_post.created_at %>
         </div>
       </div>
-    </span>
-    <span>
-      Job Description
-    </span>
-    <span>
-      <%= @job_post.job_description %>
-    </span>
-  </div>
-  <div class="col-md-4">
-    <div>
-      Button
+    </div>
+    <div id="bg-greyish-white" class="job-description">
+        Job Description
     </div>
     <div>
+      <p>
+        <%= @job_post.job_description %>
+      </p>
+    </div>
+    <div>
+      <div class="comment-section">
+        <%= render 'shared/job_post_comment_form' %>
+        <% @job_post_comments.each do |comment| %>
+          <div class="comment">
+            <div class="user-name">
+              <%= User.where(id: comment.user_id).take.name %>
+            </div>
+            <p>
+              <%= comment.comment %>
+            </p>
+            <p class="time-ago">
+              About <%= time_ago_in_words(comment.created_at) %> ago.
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 section">
+    <div class="button">
+      <%= render 'apply' %>
+    </div>
+    <div id="bg-greyish-white">
       Share
     </div>
     <div>
-      Button share
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div>
-      <%= render 'shared/job_post_comment_form' %>
-      <% @job_post_comments.each do |comment| %>
-        <div>
-          <%= User.where(id: comment.user_id).take.name %>
-          <%= comment.comment %>
-          <%= comment.created_at %>
-        </div>
-      <% end %>
+      Button
     </div>
   </div>
 </div>

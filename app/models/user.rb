@@ -13,13 +13,16 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :specialities
 
-  has_and_belongs_to_many :job_posts
+  belongs_to :job_post
 
   has_many :job_post_comments, foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_comments
 
   has_many :job_post_views, foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_views
+
+  has_many :job_post_users, foreign_key: "user_id", dependent: :destroy
+  has_many :job_posts, through: :job_post_users
 
   has_many :portfolios, dependent: :destroy
 
@@ -113,6 +116,11 @@ class User < ApplicationRecord
   # Returns true if the current user is following the other user.
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # Apllying for a job in job board
+  def apply(job_post)
+    job_post_users.create(job_post_id: job_post.id)
   end
 
   # Returns full name

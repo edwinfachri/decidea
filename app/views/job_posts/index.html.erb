@@ -1,8 +1,8 @@
 <% provide(:title, 'Job Board') %>
 <h1>Job Board</h1>
-<div id="bg-greyish-white" class="job_board">
-  <%= form_tag(job_posts_path, :method => "get", class: "search-bar") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Enter a Company Name, Job, or Keyword" %>
+<div id="bg-greyish-white" class="job-board">
+  <%= form_tag(job_posts_path, :method => "get", class: "search-bar form-inline") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Enter a Company Name, Job, or Keyword", class: "form-group" %>
     <%= image_submit_tag("icon_search.png", class: "search-img") %>
   <% end %>
   <ul>

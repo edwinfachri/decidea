@@ -4,7 +4,8 @@ class JobPostCommentsController < ApplicationController
   before_action :correct_user, only: :destroy
 
   def new
-    @job_post_comment = JobPostComment.new
+    @job_post = JobPost.find(params[:job_post_id])
+    @job_post_comment = @job_post.JobPostComment.new
   end
 
   def create
@@ -15,7 +16,7 @@ class JobPostCommentsController < ApplicationController
     if @job_post_comment.save
       redirect_to @job_post
     else
-      render new
+      render 'new'
     end
   end
 

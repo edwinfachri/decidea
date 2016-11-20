@@ -7,14 +7,13 @@ class JobPostTest < ActiveSupport::TestCase
 
   def setup
     @job_post = JobPost.new(job_title: "Example",
-                         job_location: "User",
                          job_description: "exampleuser",
                          company_name: "ABC Inc",
                          company_description: "ABC Inc is a company",
                          company_website: "www.abc.com",
                          rates: 50000,
                          user_id: 1,
-                         city_id: 1)
+                         location_id: 1)
   end
 
   test "should be valid" do
@@ -27,7 +26,7 @@ class JobPostTest < ActiveSupport::TestCase
   end
 
   test "job location should be present" do
-    @job_post.job_location = ""
+    @job_post.location_id = ""
     assert_not @job_post.valid?
   end
 
