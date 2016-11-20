@@ -123,6 +123,16 @@ class User < ApplicationRecord
     job_post_users.create(job_post_id: job_post.id)
   end
 
+  # Return true if the current user is applying the job
+  def applying?(job_post)
+    job_post_users.exists?(job_post_id: job_post)
+  end
+
+  #Cancel the applied job in job board
+  def cancel_job(job_post)
+    job_post_users.find_by(job_post_id: job_post.id).destroy
+  end
+
   # Returns full name
   def name
     self.first_name + " " + self.last_name

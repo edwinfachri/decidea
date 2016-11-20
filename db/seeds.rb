@@ -78,23 +78,39 @@ Speciality.create!(name: "Web Programmer", category_id: 4)
 Speciality.create!(name: "Music Editor", category_id: 5)
 Speciality.create!(name: "Audio Engineer", category_id: 5)
 
-JobPost.create!(job_title: "Examples",
-                job_location: "Home",
-                job_description: "example example example",
-                speciality_id: 1,
-                company_name: "Decidea",
-                company_description: "decidea decidea",
-                company_website: "https://www.decidea.com")
-
-50.times do |n|
-  job_title  = "job_title#{n+1}"
-  company_name  = "Company name #{n+1}"
-  website = "example-#{n+1}.com"
-  JobPost.create!(job_title: job_title,
-                  job_location: "Home",
-                  job_description: "example example example",
-                  speciality_id: 1,
-                  company_name: company_name,
-                  company_description: "decidea decidea",
-                  company_website: website)
-end
+Location.create!(name: "Denpasar")
+Location.create!(name: "Bandung")
+Location.create!(name: "Batu")
+Location.create!(name: "Bekasi")
+Location.create!(name: "Blitar")
+Location.create!(name: "Bogor")
+Location.create!(name: "Cianjur")
+Location.create!(name: "Cilegon")
+Location.create!(name: "Cimahi")
+Location.create!(name: "Cirebon")
+Location.create!(name: "Depok")
+Location.create!(name: "West Jakarta")
+Location.create!(name: "East Jakarta")
+Location.create!(name: "South Jakarta")
+Location.create!(name: "North Jakarta")
+Location.create!(name: "Central Jakarta")
+Location.create!(name: "Madiun")
+Location.create!(name: "Magelang")
+Location.create!(name: "Malang")
+Location.create!(name: "Mojokerto")
+Location.create!(name: "Pasuruan")
+Location.create!(name: "Pekalongan")
+Location.create!(name: "Probolinggo")
+Location.create!(name: "Salatiga")
+Location.create!(name: "Semarang")
+Location.create!(name: "South Tangerang")
+Location.create!(name: "Sukabumi")
+Location.create!(name: "Surabaya")
+Location.create!(name: "Surakarta")
+Location.create!(name: "Tasikmalaya")
+Location.create!(name: "Tangerang")
+Location.create!(name: "Tegal")
+Location.create!(name: "Yogyakarta")
+Location.create!(name: "Kediri")
+Location.create!(name: "Serang")
+Location.create!(name: "Purwokerto")

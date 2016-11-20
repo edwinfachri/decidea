@@ -46,8 +46,6 @@ class JobPost < ApplicationRecord
     where("company_description LIKE ?", "%#{search}%")
   end
 
-
-
   private
 
     # Validates the size of an uploaded picture.

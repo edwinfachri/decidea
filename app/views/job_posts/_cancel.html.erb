@@ -1,0 +1,4 @@
+<%= form_for(current_user.job_post_users.find_by(job_post_id: @job_post.id),
+             html: { method: :delete }, remote: true) do |f| %>
+  <%= f.submit "Cancel", class: "btn" %>
+<% end %>
