@@ -22,9 +22,9 @@ class PicturesController < ApplicationController
   end
 
   def create
-    portfolio = Portfolio.find(params[:portfolio_id])
-    @picture = portfolio.pictures.create(picture_params)
-
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @picture = @portfolio.pictures.create(picture_params)
+    @picture.save!
   end
 
   private

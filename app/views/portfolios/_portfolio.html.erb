@@ -1,3 +1,9 @@
 <br>
 <%= portfolio.name %>
 by <%= @user.username %>
+<% unless portfolio.pictures.first.nil? %>
+  <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
+<% end %>
+<% if @user.id == portfolio.user_id %>
+  <%= link_to 'Add Picture', new_portfolio_picture_path(portfolio) %>
+<% end %>

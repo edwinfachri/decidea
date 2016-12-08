@@ -9,9 +9,9 @@
     <%= f.text_area :description %>
   </div>
   <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+    <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png, image/jpg' %>
   </span>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'create', class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -15,10 +15,11 @@
     </div>
     <div>
       <h1>Portfolio</h1>
-          <% @portfolios.each do |l| %>
+          <% @portfolios.each do |portfolio| %>
             <div>
-              <% if l.pictures.present? %>
-                <%= link_to l.name, portfolio_picture_path(l) %>
+              <% unless portfolio.pictures.first.nil? %>
+                <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
+                <%= link_to portfolio.name, portfolio_picture_path(portfolio, portfolio.pictures.first) %> 
               <% else %>
                 <%= l.name %>
               <% end %>

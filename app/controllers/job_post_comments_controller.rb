@@ -20,6 +20,13 @@ class JobPostCommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @job_post = JobPost.find(params[:job_post_id])
+    @job_post_comment = @job_post.job_post_comments.find(params[:id])
+    @job_post_comment.destroy
+    redirect_to @job_post
+  end
+
   private
   def comment_params
     params.require(:job_post_comment).permit(:comment, :user_id, :job_post_id)

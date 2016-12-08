@@ -2,6 +2,11 @@ class PortfoliosController < ApplicationController
 
   before_action :logged_in_user
 
+  def index
+    @user = current_user
+    @portfolios = Portfolio.all
+  end
+
   def new
     @portfolio = Portfolio.new
   end

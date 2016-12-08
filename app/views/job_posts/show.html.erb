@@ -40,24 +40,12 @@
         <%= @job_post.job_description %>
       </p>
     </div>
+    <div class="comment-section">
+      <%= render 'job_post_comments/form' %>
     <div>
-      <div class="comment-section">
-        <%= render 'shared/job_post_comment_form' %>
-        <% @job_post_comments.each do |comment| %>
-          <div class="comment">
-            <div class="user-name">
-              <%= User.where(id: comment.user_id).take.name %>
-            </div>
-            <p>
-              <%= comment.comment %>
-            </p>
-            <p class="time-ago">
-              About <%= time_ago_in_words(comment.created_at) %> ago.
-            </p>
-          </div>
-        <% end %>
-      </div>
+      <%= render @job_post_comments %>
     </div>
+  </div>
   </div>
   <div class="col-md-3 section">
     <div class="button">
