@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @picture = @portfolio.pictures.find(params[:id])
     @pictures = @portfolio.pictures
-    @user = User.find_by(params[:user_id])
+    @user = User.where(id: @portfolio.user_id).take
     @next = @picture.next
     @prev = @picture.prev
   end
@@ -25,6 +25,7 @@ class PicturesController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @picture = @portfolio.pictures.create(picture_params)
     @picture.save!
+    redirect_to @portfolio
   end
 
   private

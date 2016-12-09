@@ -1,0 +1,18 @@
+<% provide(:title, 'Contact Us') %>
+<div class="form row">
+  <h1>Contact Decidea</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <%= form_for(@contact) do |f| %>
+      <span class="row form-inline">
+        <%= render 'shared/error_messages', object: f.object %>
+      </span>
+      <%= f.label :YourName %><br />
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :YourEmail %><br />
+      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.label :message %><br />
+      <%= f.text_area :message, class: 'form-control' %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>

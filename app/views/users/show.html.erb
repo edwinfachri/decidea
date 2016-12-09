@@ -6,6 +6,7 @@
       <%= @user.name %>
     </h1>
   </section>
+  <%= @user.location %>
   <section class="stats">
     <%= render 'shared/stats' %>
   </selection>
@@ -13,13 +14,14 @@
     <div>
       <%= @user.biography %>
     </div>
+    <%= render 'follow_form' if logged_in? %>
     <div>
       <h1>Portfolio</h1>
           <% @portfolios.each do |portfolio| %>
             <div>
               <% unless portfolio.pictures.first.nil? %>
                 <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
-                <%= link_to portfolio.name, portfolio_picture_path(portfolio, portfolio.pictures.first) %> 
+                <%= link_to portfolio.name, portfolio_picture_path(portfolio, portfolio.pictures.first) %>
               <% else %>
                 <%= l.name %>
               <% end %>
