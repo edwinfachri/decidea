@@ -5,6 +5,8 @@ class PortfoliosController < ApplicationController
   def index
     @user = current_user
     @portfolios = Portfolio.all
+    @portfolio_view_likes = PortfolioViewLike.all
+    @portfolio_comments = PortfolioComment.all
   end
 
   def new
@@ -12,8 +14,7 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @portfolio = @user.portfolios.create(portfolio_params)
+    @portfolio = current_user.portfolios.create!(portfolio_params)
 
     if @portfolio.save
       redirect_to root_url
@@ -25,10 +26,6 @@ class PortfoliosController < ApplicationController
   private
   def portfolio_params
     params.require(:portfolio).permit(:name, :description)
-  end
-
-  def picture_params
-    params.require(:picture).permit(:title, :description, :picture)
   end
 
 end

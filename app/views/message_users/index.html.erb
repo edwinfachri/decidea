@@ -1,0 +1,17 @@
+<% @message_users.each do |message_user| %>
+  <% if message_user.sender_id == current_user.id ||
+    message_user.recipient_id == current_user.id %>
+    <% if message_user.sender_id == current_user.id %>
+      <% recipient = User.find(message_user.recipient_id) %>
+    <% else %>
+      <% recipient = User.find(message_user.sender_id) %>
+    <% end %>
+    <%= link_to recipient.first_name, message_user_messages_path(message_user) %>
+    <%= recipient.last_name %>
+    <% if message_user.blank? %>
+      <%= Message.where(message_user_id: message_user.id).last.subject %>
+      <%= Message.where(message_user_id: message_user.id).last.body %>
+      <%= Message.where(message_user_id: message_user.id).last.created_at %>
+    <% end %>
+  <% end %>
+<% end %>

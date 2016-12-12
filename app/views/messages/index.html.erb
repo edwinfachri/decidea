@@ -1,0 +1,16 @@
+<% if @over_ten %>
+  <%= link_to 'Show Previous', '?m=all' %>
+<% end %>
+
+<% @messages.each do |message| %>
+  <% if message.body %>
+    <% user = User.find(message.user_id) %>
+    <%= user.first_name %>
+    <%= user.last_name %>
+    <%= message.subject %>
+    <%= message.body %>
+    <%= message.message_time %>
+  <% end %>
+<% end %>
+
+<%= render 'messages/form' %>

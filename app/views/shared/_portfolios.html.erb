@@ -7,6 +7,19 @@
         <% unless portfolio.pictures.first.nil? %>
           <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
         <% end %>
+        <div class="col-md-2 text-right">
+          <% seen_counter = @portfolio_view_likes.where(portfolio_id: portfolio.id).count %>
+          <% unless seen_counter.nil? || seen_counter == 0 %>
+            <%= seen_counter %>
+            <%=image_tag("icon_view.png", size: 15, alt: "Seen Counter")%>
+          <% end %>
+
+          <% comment_counter = @portfolio_comments.where(portfolio_id: portfolio.id).count %>
+          <% unless comment_counter.nil? || comment_counter == 0 %>
+            <%= comment_counter %>
+            <%=image_tag("icon_comment.png", size: 15, alt: "Comment Counter")%>
+          <% end %>
+        </div>
       </li>
     <% end %>
   </ol>

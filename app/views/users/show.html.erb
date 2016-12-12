@@ -16,6 +16,7 @@
     </div>
     <%= render 'follow_form' if logged_in? %>
     <div>
+    <%= link_to 'Message me!', message_users_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post' %>
       <h1>Portfolio</h1>
           <% @portfolios.each do |portfolio| %>
             <div>
@@ -25,11 +26,22 @@
               <% else %>
                 <%= l.name %>
               <% end %>
+              <div class="col-md-2 text-right">
+                <% seen_counter = @portfolio_view_likes.where(portfolio_id: portfolio.id).count %>
+                <% unless seen_counter.nil? || seen_counter == 0 %>
+                  <%= seen_counter %>
+                  <%=image_tag("icon_view.png", size: 15, alt: "Seen Counter")%>
+                <% end %>
+
+                <% comment_counter = @portfolio_comments.where(portfolio_id: portfolio.id).count %>
+                <% unless comment_counter.nil? || comment_counter == 0 %>
+                  <%= comment_counter %>
+                  <%=image_tag("icon_comment.png", size: 15, alt: "Comment Counter")%>
+                <% end %>
+              </div>
+
             </div>
           <% end %>
     </div>
-  </div>
-  <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
   </div>
 </div>

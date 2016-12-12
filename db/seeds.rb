@@ -16,12 +16,21 @@ User.create!(first_name: "Decidea",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
+User.create!(first_name: "Decidea",
+              last_name: "Sub-Admin",
+              email: "subadmin@decidea.com",
+              username: "subadmin",
+              password: "fetishkaki",
+              password_confirmation: "fetishkaki",
+              admin: true,
+              activated: true,
+              activated_at: Time.zone.now)
 
 99.times do |n|
   first_name  = Faker::Name.first_name
   last_name  = Faker::Name.last_name
   username = "example#{n+1}"
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example#{n+1}@decidea.com"
   password = "password"
   User.create!(first_name:  first_name,
                last_name: last_name,

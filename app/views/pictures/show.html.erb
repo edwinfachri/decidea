@@ -15,3 +15,10 @@ by <%= link_to @user.username, user_path(@user) %>
 <%= @picture.description %>
 
 published <%= @picture.created_at %>
+
+<%= link_to 'like', like_portfolio_view_like_path, class: 'vote', method: :get %>
+<div class="comment-section">
+  <%= render 'portfolio_comments/form' %>
+<div>
+  <%= render @portfolio_comments %>
+</div>

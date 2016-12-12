@@ -29,7 +29,19 @@ Rails.application.routes.draw do
   resources :portfolios do
     resources :pictures
   end
+  resources :portfolios do
+    resources :portfolio_comments
+  end
   resources :job_posts do
     resources :job_post_comments
+  end
+  resources :message_users do
+    resources :messages
+  end
+  resources :portfolio_view_likes do
+    member do
+      get :like
+      put :like
+    end
   end
 end

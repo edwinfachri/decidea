@@ -1,0 +1,13 @@
+<div class="comment">
+  <div class="user-name">
+    <%= User.where(id: portfolio_comment.user_id).take.name %>
+  </div>
+  <p>
+    <%= portfolio_comment.comment %>
+  </p>
+  <%= link_to "Delete", portfolio_portfolio_comment_path(@portfolio, portfolio_comment),
+  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <p class="time-ago">
+    About <%= time_ago_in_words(portfolio_comment.created_at) %> ago.
+  </p>
+</div>

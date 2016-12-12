@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209153744) do
+ActiveRecord::Schema.define(version: 20161211153935) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -80,6 +80,25 @@ ActiveRecord::Schema.define(version: 20161209153744) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "message_users", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "message_user_id"
+    t.integer  "user_id"
+    t.boolean  "read",            default: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["message_user_id"], name: "index_messages_on_message_user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
@@ -98,6 +117,27 @@ ActiveRecord::Schema.define(version: 20161209153744) do
     t.integer  "portfolio_id"
     t.string   "picture"
     t.index ["portfolio_id"], name: "index_pictures_on_portfolio_id"
+  end
+
+  create_table "portfolio_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.string   "comment"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["portfolio_id"], name: "index_portfolio_comments_on_portfolio_id"
+    t.index ["user_id"], name: "index_portfolio_comments_on_user_id"
+  end
+
+  create_table "portfolio_view_likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "portfolio_id"
+    t.boolean  "like",         default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["portfolio_id", "user_id"], name: "index_portfolio_view_likes_on_portfolio_id_and_user_id", unique: true
+    t.index ["portfolio_id"], name: "index_portfolio_view_likes_on_portfolio_id"
+    t.index ["user_id"], name: "index_portfolio_view_likes_on_user_id"
   end
 
   create_table "portfolios", force: :cascade do |t|

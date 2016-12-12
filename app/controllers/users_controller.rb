@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
     @portfolios = @user.portfolios
+    @portfolio_view_likes = PortfolioViewLike.all
+    @portfolio_comments = PortfolioComment.all
 
   end
 
