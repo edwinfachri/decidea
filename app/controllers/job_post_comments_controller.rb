@@ -15,6 +15,7 @@ class JobPostCommentsController < ApplicationController
     @job_post_comment.user_id = @user.id
     if @job_post_comment.save
       redirect_to @job_post
+      create_notification @job_post
     else
       render 'new'
     end
@@ -30,5 +31,14 @@ class JobPostCommentsController < ApplicationController
   private
   def comment_params
     params.require(:job_post_comment).permit(:comment, :user_id, :job_post_id)
+  end
+
+  def create_notification(job_post)
+    return if job_post.user_id == current_user.id
+    Notification.create!(user_id: job_post.user_id,
+                        notified_by_id: current_user.id,
+                        identifier: job_post.id,
+                        notice_type: 3
+                        )
   end
 end

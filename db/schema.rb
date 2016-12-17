@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211153935) do
+ActiveRecord::Schema.define(version: 20161215163432) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -107,6 +107,18 @@ ActiveRecord::Schema.define(version: 20161211153935) do
     t.string   "picture"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "notified_by_id"
+    t.integer  "identifier"
+    t.integer  "notice_type"
+    t.boolean  "read",           default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.index ["notified_by_id"], name: "index_notifications_on_notified_by_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "pictures", force: :cascade do |t|

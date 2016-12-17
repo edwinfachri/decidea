@@ -29,6 +29,11 @@ class MessagesController < ApplicationController
   def create
     @message = @message_user.messages.new(message_params)
     if @message.save
+      if sender?
+        create_notification_sender @message_user
+      else
+        create_notification_recipient @message_user
+      end
       redirect_to message_user_messages_path(@message_user)
     end
   end
@@ -36,5 +41,25 @@ class MessagesController < ApplicationController
   private
     def message_params
       params.require(:message).permit(:subject, :body, :user_id)
+    end
+
+    def create_notification_sender(message_user)
+      Notification.create!(user_id: message_user.recipient_id,
+                          notified_by_id: current_user.id,
+                          identifier: message_user.id,
+                          notice_type: 5
+                          )
+    end
+
+    def create_notification_recipient(message_user)
+      Notification.create!(user_id: message_user.sender_id,
+                          notified_by_id: current_user.id,
+                          identifier: message_user.id,
+                          notice_type: 5
+                          )
+    end
+
+    def sender?
+      current_user.id == @message_user.sender_id
     end
 end

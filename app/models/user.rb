@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_many :portfolio_view_likes, foreign_key: "user_id", dependent: :destroy
   has_many :viewable_portfolios, through: :portfolio_view_likes, :class_name => "Portfolio"
 
+  has_many :notifications, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_name, presence: true, length: { maximum: 20 }

@@ -1,0 +1,14 @@
+<li>
+  <% if notification.notice_type == 1 %>
+  New Comment on Portfolio
+<% elsif notification.notice_type == 2 %>
+  New Like on Portfolio
+<% elsif notification.notice_type == 3 %>
+  New comment on JobBoard
+<% elsif notification.notice_type == 4 %>
+  New Application on JobBoard
+<% elsif notification.notice_type == 5 %>
+  New Message
+<% end %> By
+<%= User.where(id: notification.notified_by_id).take.username %>
+</li>
