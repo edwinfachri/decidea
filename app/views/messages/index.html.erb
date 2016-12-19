@@ -2,6 +2,14 @@
   <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
+<% if current_user.id == @message_user.sender_id %>
+  <%= profile_picture_for User.where(id: @message_user.recipient_id).take %>
+  <%= User.where(id: @message_user.recipient_id).take.username %>
+<% else %>
+  <%= profile_picture_for User.where(id: @message_user.sender_id).take %>
+  <%= User.where(id: @message_user.sender_id).take.username %>
+<% end %>
+
 <% @messages.each do |message| %>
   <% if message.body %>
     <% user = User.find(message.user_id) %>

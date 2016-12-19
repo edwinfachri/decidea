@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   belongs_to :job_post
 
+  has_many :profile_pictures, dependent: :destroy
+
   has_many :job_post_comments, foreign_key: "user_id", dependent: :destroy
   has_many :job_posts, through: :job_post_comments
 

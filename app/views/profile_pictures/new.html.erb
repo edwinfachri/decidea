@@ -1,0 +1,9 @@
+<%= form_for(@profile_picture) do |f| %>
+
+  <span class="picture">
+    <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png, image/jpg' %>
+  </span>
+  <div class="actions">
+    <%= f.submit 'Change', class: "btn btn-primary" %>
+  </div>
+<% end %>

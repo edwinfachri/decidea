@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215163432) do
+ActiveRecord::Schema.define(version: 20161219084300) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -159,6 +159,15 @@ ActiveRecord::Schema.define(version: 20161215163432) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
+
+  create_table "profile_pictures", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "picture"
+    t.boolean  "activated",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_profile_pictures_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

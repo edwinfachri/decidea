@@ -6,9 +6,10 @@
     <% else %>
       <% recipient = User.find(message_user.sender_id) %>
     <% end %>
+    <%= profile_picture_for recipient %>
     <%= link_to recipient.first_name, message_user_messages_path(message_user) %>
     <%= recipient.last_name %>
-    <% if message_user.blank? %>
+    <% if  Message.where(message_user_id: message_user.id).last != nil %>
       <%= Message.where(message_user_id: message_user.id).last.subject %>
       <%= Message.where(message_user_id: message_user.id).last.body %>
       <%= Message.where(message_user_id: message_user.id).last.created_at %>

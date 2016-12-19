@@ -8,7 +8,7 @@
     </div>
     <div>
       <% @user = User.where(id: job_post.user_id) %>
-      <%= link_to @user.take&.username, user_path(@user) %>
+      <%= link_to @user.take&.username, user_path(@user.take) %>
     </div>
     <div>
       <%= Location.where(id: job_post.location_id).take&.name %>

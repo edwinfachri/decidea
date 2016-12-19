@@ -1,5 +1,8 @@
 <%= form_for(current_user, remote: true) do |f| %>
 
+  <%= profile_picture_for current_user %>
+  <%= link_to "Change Profile Picture", new_profile_picture_path %>
+
   <%= f.label :first_name %>
   <%= f.text_field :first_name, class: 'form-control' %>
 

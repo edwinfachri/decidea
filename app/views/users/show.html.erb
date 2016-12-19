@@ -2,9 +2,9 @@
 <div class="row">
   <section class="user_info">
     <h1>
-      <%= gravatar_for @user %>
       <%= @user.name %>
     </h1>
+      <%= profile_picture_for @user %>
   </section>
   <%= @user.location %>
   <section class="stats">
