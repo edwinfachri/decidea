@@ -1,0 +1,6 @@
+<%= contact.name %>
+<%= contact.email %>
+<%= contact.message %>
+<% if contact.replied == false %>
+  <%= link_to "Reply", "#" %>
+<% end %>
