@@ -11,4 +11,5 @@
   New Message
 <% end %> By
 <%= User.where(id: notification.notified_by_id).take.username %>
+<%= notification.read %>
 </li>
