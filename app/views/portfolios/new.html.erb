@@ -9,7 +9,7 @@
       <%= hidden_field_tag :user_id, current_user.id %>
       <%= f.text_field :name, class: 'form-control', placeholder: "Portfolio's name" %>
       <%= f.text_area :description, class: 'form-control', placeholder: "Description" %>
-
+      <%= f.collection_select(:speciality_id, Speciality.all, :id, :name) %>
       <%= f.submit 'create', class: "btn btn-primary" %>
       </p>
     <% end %>

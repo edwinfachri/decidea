@@ -24,7 +24,7 @@
                 <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
                 <%= link_to portfolio.name, portfolio_picture_path(portfolio, portfolio.pictures.first) %>
               <% else %>
-                <%= l.name %>
+                <%= portfolio.name %>
               <% end %>
               <div class="col-md-2 text-right">
                 <% seen_counter = @portfolio_view_likes.where(portfolio_id: portfolio.id).count %>

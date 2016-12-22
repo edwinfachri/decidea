@@ -1,6 +1,6 @@
-<% if @portfolios.any? %>
+<% if @paidportfolios.any? %>
   <ol class="">
-    <% @portfolios.each do |portfolio| %>
+    <% @paidportfolios.each do |portfolio| %>
       <li>
         <%= portfolio.name %>
         <%= portfolio.description %>

@@ -12,6 +12,28 @@ Rails.application.routes.draw do
   get 'users/portfolio_setting'
   get 'users/password_setting'
 
+  get 'static_pages/graphic_designer'
+  get 'static_pages/brand_designer'
+  get 'static_pages/uiux_designer'
+  get 'static_pages/3d_animator'
+  get 'static_pages/3d_modeler'
+  get 'static_pages/3d_renderer'
+  get 'static_pages/drafter'
+
+  get 'static_pages/cinematrographer'
+  get 'static_pages/director'
+  get 'static_pages/script_writer'
+  get 'static_pages/content_writer'
+  get 'static_pages/talent'
+  get 'static_pages/motion_grapher'
+
+  get 'static_pages/photographer'
+
+  get 'static_pages/web_programmer'
+
+  get 'static_pages/music_editor'
+  get 'static_pages/audio_engineer'
+
   resources :users do
     member do
       get :following, :followers
@@ -19,7 +41,6 @@ Rails.application.routes.draw do
   end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :categories
   resources :specialities

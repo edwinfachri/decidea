@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219084300) do
+ActiveRecord::Schema.define(version: 20161222041752) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -99,16 +99,6 @@ ActiveRecord::Schema.define(version: 20161219084300) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "microposts", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "picture"
-    t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_microposts_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "notified_by_id"
@@ -155,9 +145,11 @@ ActiveRecord::Schema.define(version: 20161219084300) do
   create_table "portfolios", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.integer  "speciality_id"
+    t.index ["speciality_id"], name: "index_portfolios_on_speciality_id"
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
 
@@ -223,6 +215,7 @@ ActiveRecord::Schema.define(version: 20161219084300) do
     t.string   "last_name"
     t.string   "location"
     t.text     "biography"
+    t.boolean  "paid",              default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

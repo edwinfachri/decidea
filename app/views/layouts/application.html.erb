@@ -11,6 +11,7 @@
   </head>
   <body id="<%= @login_page ? '' : 'bg-greyish-white'%>">
     <%= render 'layouts/header' %>
+    <% render 'layouts/second_header' -%>
     <div class="container-fluid">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>

@@ -14,7 +14,7 @@ class PortfolioCommentsController < ApplicationController
     @portfolio_comment.user_id = @user.id
     if @portfolio_comment.save
       create_notification @portfolio
-      redirect_to root_url
+      redirect_to :back
     else
       render 'new'
     end

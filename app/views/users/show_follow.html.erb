@@ -5,14 +5,12 @@
 
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
-      <span><b>Microposts:</b> <%= @user.microposts.count %></span>
-    </section>
     <section class="stats">
       <%= render 'shared/stats' %>
       <% if @users.any? %>
         <div class="user_avatars">
           <% @users.each do |user| %>
-          
+            <%= profile_picture_for user %>
           <% end %>
         </div>
       <% end %>
