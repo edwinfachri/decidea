@@ -25,7 +25,7 @@ class JobPostCommentsController < ApplicationController
     @job_post = JobPost.find(params[:job_post_id])
     @job_post_comment = @job_post.job_post_comments.find(params[:id])
     @job_post_comment.destroy
-    redirect_to @job_post
+    redirect_to :back
   end
 
   private

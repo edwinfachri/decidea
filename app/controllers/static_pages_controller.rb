@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def home
     @portfolios = Portfolio.all
     @portfolio_view_likes = PortfolioViewLike.all
-    @portfolio_comments = PortfolioComment.all
+    @portfolio_comments = PortfolioComment.where(deleted: false).all
     paiduser
   end
 
@@ -20,7 +20,7 @@ class StaticPagesController < ApplicationController
   def graphic_designer
     @portfolios = Portfolio.where(speciality_id: 1)
     @portfolio_view_likes = PortfolioViewLike.all
-    @portfolio_comments = PortfolioComment.all
+    @portfolio_comments = PortfolioComment.where(deleted: false).all
   end
 
   private

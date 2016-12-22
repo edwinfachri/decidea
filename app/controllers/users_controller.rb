@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @portfolios = @user.portfolios
     @portfolio_view_likes = PortfolioViewLike.all
-    @portfolio_comments = PortfolioComment.all
+    @portfolio_comments = PortfolioComment.where(deleted: false).all
 
   end
 

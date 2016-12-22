@@ -10,7 +10,7 @@ class PicturesController < ApplicationController
     @next = @picture.next
     @prev = @picture.prev
     @portfolio_view = current_user.portfolio_view_likes.find_or_create_by(portfolio_id: @portfolio.id)
-    @portfolio_comments = PortfolioComment.where(portfolio_id: @portfolio.id).all
+    @portfolio_comments = PortfolioComment.where(portfolio_id: @portfolio.id, deleted: false).all
   end
 
   def new

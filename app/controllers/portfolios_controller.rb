@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
     @user = current_user
     @portfolios = Portfolio.all
     @portfolio_view_likes = PortfolioViewLike.all
-    @portfolio_comments = PortfolioComment.all
+    @portfolio_comments = PortfolioComment.where(deleted: false).all
   end
 
   def new
