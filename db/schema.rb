@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222041752) do
+ActiveRecord::Schema.define(version: 20161222163953) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20161222041752) do
     t.integer  "job_post_id"
     t.integer  "user_id"
     t.string   "comment"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "deleted",     default: false
     t.index ["job_post_id"], name: "index_job_post_comments_on_job_post_id"
     t.index ["user_id"], name: "index_job_post_comments_on_user_id"
   end
@@ -65,12 +66,13 @@ ActiveRecord::Schema.define(version: 20161222041752) do
     t.string   "company_name"
     t.text     "company_description"
     t.string   "company_website"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "logo"
     t.integer  "rates"
     t.integer  "user_id"
     t.integer  "location_id"
+    t.boolean  "deleted",             default: false
     t.index ["user_id"], name: "index_job_posts_on_user_id"
   end
 
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(version: 20161222041752) do
     t.boolean  "read",            default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.boolean  "deleted",         default: false
     t.index ["message_user_id"], name: "index_messages_on_message_user_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -114,10 +117,11 @@ ActiveRecord::Schema.define(version: 20161222041752) do
   create_table "pictures", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "portfolio_id"
     t.string   "picture"
+    t.boolean  "deleted",      default: false
     t.index ["portfolio_id"], name: "index_pictures_on_portfolio_id"
   end
 
@@ -125,8 +129,9 @@ ActiveRecord::Schema.define(version: 20161222041752) do
     t.integer  "user_id"
     t.integer  "portfolio_id"
     t.string   "comment"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "deleted",      default: false
     t.index ["portfolio_id"], name: "index_portfolio_comments_on_portfolio_id"
     t.index ["user_id"], name: "index_portfolio_comments_on_user_id"
   end
@@ -145,10 +150,11 @@ ActiveRecord::Schema.define(version: 20161222041752) do
   create_table "portfolios", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "user_id"
     t.integer  "speciality_id"
+    t.boolean  "deleted",       default: false
     t.index ["speciality_id"], name: "index_portfolios_on_speciality_id"
     t.index ["user_id"], name: "index_portfolios_on_user_id"
   end
@@ -216,6 +222,7 @@ ActiveRecord::Schema.define(version: 20161222041752) do
     t.string   "location"
     t.text     "biography"
     t.boolean  "paid",              default: false
+    t.string   "background"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

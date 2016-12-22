@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'users/portfolio_setting'
   get 'users/password_setting'
 
+  
   get 'static_pages/graphic_designer'
   get 'static_pages/brand_designer'
   get 'static_pages/uiux_designer'
