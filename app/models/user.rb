@@ -136,7 +136,12 @@ class User < ApplicationRecord
 
   # Returns full name
   def name
-    self.first_name + " " + self.last_name
+    self.paid ? self.first_name + " " + self.last_name + "$$" : self.first_name + " " + self.last_name
+  end
+
+
+  def paidusername
+    self.paid ? self.username + "$$" : self.username
   end
 
   private

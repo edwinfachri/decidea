@@ -7,6 +7,8 @@
         <% unless portfolio.pictures.first.nil? %>
           <%= link_to (image_tag portfolio.pictures.first.picture), portfolio_picture_path(portfolio, portfolio.pictures.first) %>
         <% end %>
+        by
+        <%= User.where(id: portfolio.user_id).take.name %>
         <% if logged_in? %>
           <% if portfolio.user_id == current_user.id %>
             <%= link_to "add picture", new_portfolio_picture_path(portfolio) %>

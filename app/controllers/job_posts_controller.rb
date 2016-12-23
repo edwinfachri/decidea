@@ -14,9 +14,8 @@ class JobPostsController < ApplicationController
   end
 
   def show
-    @user = current_user
     @job_post = JobPost.find(params[:id])
-    @job_post_view = @user.job_post_views.find_or_create_by(job_post_id: @job_post.id)
+    @job_post_view = current_user.job_post_views.find_or_create_by(job_post_id: @job_post.id)
     @job_post_comments = JobPostComment.where(job_post_id: @job_post.id, deleted: false).all
     @specialities = SpecialityJobPost.where(job_post_id: @job_post.id)
   end
