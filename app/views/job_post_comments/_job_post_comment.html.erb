@@ -5,8 +5,10 @@
   <p>
     <%= job_post_comment.comment %>
   </p>
-  <%= link_to "Delete", job_post_job_post_comment_path(@job_post, job_post_comment),
-  method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if User.where(id: job_post_comment.user_id).take.id == current_user.id %>
+      <%= link_to "Delete", job_post_job_post_comment_path(@job_post, job_post_comment),
+      method: :put, data: { confirm: 'Are you sure?' } %>
+    <% end %>
   <p class="time-ago">
     About <%= time_ago_in_words(job_post_comment.created_at) %> ago.
   </p>

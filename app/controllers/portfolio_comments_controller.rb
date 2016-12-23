@@ -1,6 +1,5 @@
 class PortfolioCommentsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :logged_in_user, only: [:create, :update]
 
   def new
     @portfolio = Portfolio.find(params[:portfolio_id])
@@ -20,11 +19,13 @@ class PortfolioCommentsController < ApplicationController
     end
   end
 
-  def destroy
+  def update
     @portfolio = Portfolio.find(params[:portfolio_id])
     @portfolio_comment = @portfolio.portfolio_comments.find(params[:id])
-    @portfolio_comment.destroy
-    redirect_to root_url
+    @portfolio_comment.update_attributes!(deleted: true)
+    if @portfolio_comment.save
+      redirect_to :back
+    end
   end
 
   private

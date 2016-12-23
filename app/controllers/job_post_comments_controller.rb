@@ -1,7 +1,6 @@
 class JobPostCommentsController < ApplicationController
 
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :correct_user, only: :destroy
+  before_action :logged_in_user, only: [:create, :update]
 
   def new
     @job_post = JobPost.find(params[:job_post_id])
@@ -21,11 +20,13 @@ class JobPostCommentsController < ApplicationController
     end
   end
 
-  def destroy
+  def update
     @job_post = JobPost.find(params[:job_post_id])
     @job_post_comment = @job_post.job_post_comments.find(params[:id])
-    @job_post_comment.destroy
-    redirect_to :back
+    @job_post_comment.update_attributes!(deleted: true)
+    if @job_post_comment.save
+      redirect_to :back
+    end
   end
 
   private
