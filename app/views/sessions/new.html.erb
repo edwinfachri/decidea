@@ -1,8 +1,11 @@
 <% provide(:title, "Log in") %>
+<% @white_background = true %>
 <div class="form row">
-  <h1>LOG IN</h1>
   <div class="col-md-10 col-md-offset-1">
-    <%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-title">
+      <h1>LOG IN</h1>
+    </div>
+    <%= form_for(:session, url: login_path, class: "login") do |f| %>
 
       <%= f.email_field :email, class: 'form-control', placeholder: "EMAIL ADDRESS" %>
 

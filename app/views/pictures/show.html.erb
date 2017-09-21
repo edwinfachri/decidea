@@ -1,25 +1,57 @@
-<%= profile_picture_for @user %>
-<%= @portfolio.name %>
-<%= @picture.title %>
-<%= @user.paidusername %>
-<%= image_tag @picture.picture %>
+<div class="picture">
+  <%= profile_picture_for @user %>
+  <%= @picture.title %>
+  <h4>by <%= @user.paidusername %></h4>
+</div>
+<div class="picture picture-container bg-white">
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag @picture.picture %>
+      <div class="comment-section">
+        <%= render 'portfolio_comments/form' %>
+        <div>
+          <%= render @portfolio_comments %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="bg-greyish-white">
+        image <%= @picture.id %> of <%= @pictures.count %>
+        <% if @next %>
+          <%= link_to "Next", [@portfolio, @next] %>
+        <% end %>
+        <% if @prev %>
+          <%= link_to "Previous", [@portfolio, @prev] %>
+        <% end %>
+      </div>
 
-image <%= @picture.id %> of <%= @pictures.count %>
-<% if @next %>
-  <%= link_to "Next", [@portfolio, @next] %>
-<% end %>
-<% if @prev %>
-  <%= link_to "Previous", [@portfolio, @prev] %>
-<% end %>
-<%= @picture.title %>
-by <%= link_to @user.paidusername, user_path(@user) %>
-<%= @picture.description %>
+      <div>
+        <h5><%= @picture.title %></h5>
+        <h6>by <%= link_to @user.paidusername, user_path(@user) %></h6>
+        <h6><%= @picture.description %></h6>
 
-published <%= @picture.created_at %>
+        <div class="icons">
+          <% seen_counter = @portfolio_views.where(portfolio_id: @portfolio.id).count %>
+          <% unless seen_counter.nil? || seen_counter == 0 %>
+            <%= seen_counter %>
+            <%=image_tag("icon_view.png", size: 15, alt: "Seen Counter")%>
+          <% end %>
 
-<%= link_to 'like', like_portfolio_view_like_path, class: 'vote', method: :put %>
-<div class="comment-section">
-  <%= render 'portfolio_comments/form' %>
-<div>
-  <%= render @portfolio_comments %>
+          <% comment_counter = @portfolio_comments.where(portfolio_id: @portfolio.id, deleted: false).count %>
+          <% unless comment_counter.nil? || comment_counter == 0 %>
+            <%= comment_counter %>
+            <%=image_tag("icon_comment.png", size: 15, alt: "Comment Counter")%>
+          <% end %>
+        </div>
+
+        <% if @likeable.like == false %>
+          <%= link_to 'like', like_portfolio_picture_path(@picture), :controller => :picture, :action => :like %>
+        <% elsif @likeable.like == true %>
+          <%= link_to 'Unlike', like_portfolio_picture_path(@picture), :controller => :picture, :action => :like %>
+        <% end %>
+
+        published <%= @picture.created_at %>
+      </div>
+    </div>
+  </div>
 </div>

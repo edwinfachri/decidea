@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'users/portfolio_setting'
   get 'users/password_setting'
 
-  
+
   get 'static_pages/graphic_designer'
   get 'static_pages/brand_designer'
   get 'static_pages/uiux_designer'
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get 'static_pages/music_editor'
   get 'static_pages/audio_engineer'
 
+
   resources :users do
     member do
       get :following, :followers
@@ -51,21 +52,18 @@ Rails.application.routes.draw do
   resources :notifications
   resources :profile_pictures
   resources :portfolios do
-    resources :pictures
-  end
-  resources :portfolios do
     resources :portfolio_comments
+    resources :pictures do
+      member do
+        get :like
+      end
+    end
+    resources :portfolio_view_likes
   end
   resources :job_posts do
     resources :job_post_comments
   end
   resources :message_users do
     resources :messages
-  end
-  resources :portfolio_view_likes do
-    member do
-      get :like
-      put :like
-    end
   end
 end

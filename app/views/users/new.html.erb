@@ -1,12 +1,15 @@
 <% provide(:title, 'Sign up') %>
-<div class="form row">
-  <h1>Create Your Account</h1>
+<% @white_background = true %>
+<div class="form row sign-up">
   <div class="col-md-10 col-md-offset-1">
+    <div class="form-title">
+      <h1>Create Your Account</h1>
+    </div>
     <%= form_for(@user) do |f| %>
       <span class="row form-inline">
         <%= render 'shared/error_messages', object: f.object %>
       </span>
-      <div class="row form-inline">
+      <div class="row inline">
         <%= f.text_field :first_name, class: 'form-control', placeholder: "FIRST NAME" %>
         <%= f.text_field :last_name, class: 'form-control', placeholder: "LAST NAME" %>
       </div>

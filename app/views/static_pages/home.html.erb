@@ -1,3 +1,19 @@
-<%= render 'shared/paidportfolios' %>
--------------------------
-<%= render 'shared/portfolios' %>
+<!-- <div id="background-img">
+  <%=image_tag("background.png", style: 'max-height:100%;max-width:1450px;', alt: "Decidea logo") %>
+  <div id="block">
+    <div id="inside-block" class="text-center">
+      <p>Everything Begin With an Idea</p>
+      <p><button>Create a Portfolio</button></p>
+      <p><button>Post a Job</button></p>
+    </div>
+  </div>
+</div> -->
+
+<div class="homepage">
+  <div class="paid_portfolios">
+    <%= render 'shared/paidportfolios' %>
+  </div>
+  <div class="portfolios">
+    <%= render 'shared/portfolios' %>
+  </div>
+</div>

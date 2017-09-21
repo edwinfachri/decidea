@@ -1,43 +1,49 @@
-<footer class="footer">
-  <span class="col-md-4">
-    <small>
-      <%= link_to image_tag("decidea_logo.png", width: 200, length: 300, alt: "Decidea logo"),
-        root_path, id: "logo_footer" %>
-      <p id="copyrights">2016 Decidea, Inc. All Rights Reserved.</p>
-    </small>
-  </span>
-  <nav class="col-md-4">
-    <small>
-      <ul>
-        <li><%= link_to "About Us", about_path %></li>
-        <li><%= link_to "Privacy Policy", '#' %></li>
-        <li><%= link_to "Term of Use", '#' %></li>
-        <li><%= link_to "Contact", new_contact_path %><li>
-        <li>
-          <% if logged_in? %>
-            <% if current_user.admin? %>
-              <%= link_to "Contacts", contacts_path %>
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-    </small>
-  </nav>
-  <span class="col-md-4">
-    <small>
-      <p id="follow_decidea">Follow Decidea</p>
-      <p>Connect with us to get new jobs and project daily</p>
-    </small>
-    <div id="share_button">
-        <%= link_to image_tag("icon_fb.png", onmouseover: "this.src='#{asset_path('icon_fblight.png')}'",
-          onmouseout: "this.src='#{asset_path('icon_fb.png')}'", size: 30, alt: "Decidea's Facebook"),
-            '#'%>
-        <%= link_to image_tag("icon_twitter.png", onmouseover: "this.src='#{asset_path('icon_twitterlight.png')}'",
-          onmouseout: "this.src='#{asset_path('icon_twitter.png')}'", size: 30, alt: "Decidea's Twitter"),
-            '#' %>
-        <%= link_to image_tag("icon_instagram.png", onmouseover: "this.src='#{asset_path('icon_instagramlight.png')}'",
-          onmouseout: "this.src='#{asset_path('icon_instagram.png')}'", size: 30, alt: "Decidea's Instagram"),
-            '#' %>
+<footer>
+  <div class="container">
+    <span class="col-md-8">
+      <div>
+        <%= link_to image_tag("decidea_logo.png", width: 250, length: 350, alt: "Decidea logo"),
+          root_path, id: "logo_footer" %>
       </div>
-  </span>
+      <div class="row">
+        <div class="col-md-5">
+          <p id="copyrights">2016 Decidea, Inc. All Rights Reserved.</p>
+        </div>
+        <nav c.lass="col-md-7">
+          <div>
+            <ul class="text-middle">
+              <li><%= link_to "About Us", about_path %></li>
+              <li><%= link_to "Privacy Policy", '#' %></li>
+              <li><%= link_to "Term of Use", '#' %></li>
+              <li><%= link_to "Contact", new_contact_path %><li>
+              <li>
+                <% if logged_in? %>
+                  <% if current_user.admin? %>
+                    <%= link_to "Contacts", contacts_path %>
+                  <% end %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </span>
+    <span class="col-md-4">
+      <div>
+        <p id="follow_decidea">Follow Decidea</p>
+        <p>Connect with us to get new jobs and project daily</p>
+      </div>
+      <div id="share_button">
+          <%= link_to image_tag("icon_fb.png", onmouseover: "this.src='#{asset_path('icon_fblight.png')}'",
+            onmouseout: "this.src='#{asset_path('icon_fb.png')}'", size: 30, alt: "Decidea's Facebook"),
+              '#'%>
+          <%= link_to image_tag("icon_twitter.png", onmouseover: "this.src='#{asset_path('icon_twitterlight.png')}'",
+            onmouseout: "this.src='#{asset_path('icon_twitter.png')}'", size: 30, alt: "Decidea's Twitter"),
+              '#' %>
+          <%= link_to image_tag("icon_instagram.png", onmouseover: "this.src='#{asset_path('icon_instagramlight.png')}'",
+            onmouseout: "this.src='#{asset_path('icon_instagram.png')}'", size: 30, alt: "Decidea's Instagram"),
+              '#' %>
+        </div>
+    </span>
+  </div>
 </footer>
