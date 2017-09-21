@@ -346,7 +346,7 @@ GEM
     xml-simple (1.1.5)
 
 PLATFORMS
-  ruby
+  ruby (2.3.4)
 
 DEPENDENCIES
   bcrypt (= 3.1.11)
